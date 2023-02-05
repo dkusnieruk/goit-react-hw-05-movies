@@ -1,0 +1,12 @@
+.main{
+    display:flex;
+    color:black;
+    text-decoration: none;
+}
+.main:hover{
+    color:blue;   
+}
+
+.link{
+    margin:5px;
+}

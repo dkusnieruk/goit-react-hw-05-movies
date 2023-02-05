@@ -1,0 +1,16 @@
+.title{
+    display:flex;
+    justify-content: center;
+}
+.main {
+    text-decoration: none;
+    color: black;
+}
+.main:hover{
+    color:blue;
+}
+
+.list{
+    cursor: pointer;
+    margin:5px;
+}

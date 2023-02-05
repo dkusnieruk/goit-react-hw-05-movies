@@ -1,0 +1,14 @@
+.nav{
+    height: 50px;
+    display:flex;
+    align-items: center;
+}
+
+.link{
+    margin:10px;
+    text-decoration: none;
+    color: black; 
+       
+}
+
+
