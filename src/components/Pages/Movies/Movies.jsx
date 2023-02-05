@@ -22,10 +22,11 @@ const Movies = () => {
   };
   useEffect(() => {
     findMoviesData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
-      <form onSubmit={findMoviesData}>
+      <form onSubmit={findMoviesData} className={css.form}>
         <input
           type="text"
           autoComplete="off"

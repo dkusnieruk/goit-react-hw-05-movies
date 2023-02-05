@@ -9,8 +9,8 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<Template />}>
-          <Route path="/react-homework-template/" element={<Main />} />
-          <Route path="/react-homework-template/movies" element={<Movies />} />
+          <Route path="/goit-react-hw-05-movies/" element={<Main />} />
+          <Route path="/goit-react-hw-05-movies/movies" element={<Movies />} />
           <Route path="*/" element={<NotFound />} />
         </Route>
       </Routes>

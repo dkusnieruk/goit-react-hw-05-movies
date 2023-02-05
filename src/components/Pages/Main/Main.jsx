@@ -15,12 +15,13 @@ const Main = () => {
 
   useEffect(() => {
     fetchPopular();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <h1 className={css.title}>Top trending movies</h1>
-      <ol className>
+      <ol>
         {data.map(movie => {
           return (
             <li index={movie.id} id={movie.id} className={css.list}>
