@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import css from '../Main/main.module.css';
+import css from '../Home/home.module.css';
 const API_KEY = '209b988e1e5a3c54f84bfbe290fdf3e2';
 
-const Main = () => {
+const Home = () => {
   const [data, setData] = useState([]);
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
   const fetchPopular = async () => {
@@ -25,7 +25,7 @@ const Main = () => {
         {data.map(movie => {
           return (
             <li index={movie.id} id={movie.id} className={css.list}>
-              <Link className={css.main} to={``}>
+              <Link  className={css.main} to={`/goit-react-hw-05-movies/movies/${movie.id}`}>
                 {movie.title}
               </Link>
             </li>
@@ -36,4 +36,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;

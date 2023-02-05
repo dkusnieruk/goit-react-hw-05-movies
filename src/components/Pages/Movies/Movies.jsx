@@ -13,7 +13,7 @@ const Movies = () => {
 
     setFilter(value);
   };
-  const findMoviesData = async event => {
+  const findMoviesData = async (event) => {
     event.preventDefault();
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${filter}&page=1&include_adult=false`;
     const data = await axios.get(url);
@@ -45,8 +45,7 @@ const Movies = () => {
           findMovies.map(singleTitle => {
             return (
               <li id={singleTitle.id} key={singleTitle.id} className={css.link}>
-                <Link to={''} className={css.main}>
-                  {' '}
+                <Link to={`/goit-react-hw-05-movies/movies/${singleTitle.id}`} className={css.main}>
                   {singleTitle.title}
                 </Link>
               </li>
