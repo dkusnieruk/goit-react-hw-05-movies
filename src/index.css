@@ -14,9 +14,9 @@ code {
     monospace;
 }
 
-nav a.active{
+nav a.active {
   background-color: black;
-  color:white;
-  padding:10px;
-  border-radius:25%;
+  color: white;
+  padding: 10px;
+  border-radius: 25%;
 }

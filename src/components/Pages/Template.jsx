@@ -1,23 +1,22 @@
-import Nav from "./Nav/Nav"
-import { Outlet } from "react-router-dom"
+import Nav from './Nav/Nav';
+import { Outlet } from 'react-router-dom';
 
 const Template = () => {
-return(
+  return (
     <>
-    <header>
-    <Nav/>
-    </header>
-    <main>
-    <hr/>    
-    <Outlet/>
-    </main>
-    <footer>
-        <hr/>
+      <header>
+        <Nav />
+      </header>
+      <main>
+        <hr />
+        <Outlet />
+      </main>
+      <footer>
+        <hr />
         <p>Routing Movie Project</p>
-    </footer>
+      </footer>
     </>
-)
+  );
+};
 
-}
-
-export default Template 
+export default Template;
