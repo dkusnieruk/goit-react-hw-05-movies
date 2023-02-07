@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link, Outlet, useSearchParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import css from '../Movies/movies.module.css';
 const API_KEY = '209b988e1e5a3c54f84bfbe290fdf3e2';
 
@@ -8,6 +8,7 @@ const Movies = () => {
   const [findMovies, setFindMovies] = useState([]);
   const [filter, setFilter] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation()
   const query = searchParams.get('query');
   const onChange = event => {
     const { value } = event.target;
@@ -25,7 +26,7 @@ const Movies = () => {
   useEffect(() => {
     findMoviesData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
     <>
@@ -51,6 +52,7 @@ const Movies = () => {
                 <Link
                   to={`/goit-react-hw-05-movies/movies/${singleTitle.id}`}
                   className={css.main}
+                  state={{from:location}}
                 >
                   {singleTitle.title}
                 </Link>
