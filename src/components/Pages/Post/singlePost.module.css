@@ -31,3 +31,10 @@
 .genresList{
     display:flex;
 }
+
+.back{
+    background-color: black;
+    color:white;
+    text-decoration: none;
+    border-radius:25%;
+}

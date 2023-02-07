@@ -1,0 +1,13 @@
+.list{
+    list-style: none;
+}
+
+.author{
+    font-weight: 500;
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+.review{
+    font-size: 15px;
+}

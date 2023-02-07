@@ -1,17 +1,18 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import css from '../Movies/movies.module.css';
 const API_KEY = '209b988e1e5a3c54f84bfbe290fdf3e2';
 
 const Movies = () => {
   const [findMovies, setFindMovies] = useState([]);
   const [filter, setFilter] = useState('');
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
   const onChange = event => {
     const { value } = event.target;
-
     setFilter(value);
+    setSearchParams({query:value})
   };
   const findMoviesData = async (event) => {
     event.preventDefault();
@@ -23,7 +24,8 @@ const Movies = () => {
   useEffect(() => {
     findMoviesData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [])
+
   return (
     <>
       <form onSubmit={findMoviesData} className={css.form}>
@@ -53,6 +55,9 @@ const Movies = () => {
           })
         )}
       </ol>
+      <section>
+        <Outlet/>
+      </section>
     </>
   );
 };

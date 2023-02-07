@@ -1,0 +1,11 @@
+.image{
+    width: 250px;
+    height: 350px;
+}
+
+.list{
+    display:grid;
+    grid-template-columns: auto auto;
+    column-gap: 25px;
+    list-style: none;
+}
