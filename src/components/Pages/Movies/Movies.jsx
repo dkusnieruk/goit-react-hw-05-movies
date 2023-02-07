@@ -1,40 +1,40 @@
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import css from '../Movies/movies.module.css';
-const API_KEY = '209b988e1e5a3c54f84bfbe290fdf3e2';
+import { findMoviesData } from 'components/Api/api';
 
 const Movies = () => {
-  const [findMovies, setFindMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [filter, setFilter] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation()
+  
+// eslint-disable-next-line
   const query = searchParams.get('query');
+  
   const onChange = event => {
     const { value } = event.target;
     setFilter(value);
     setSearchParams({ query: value });
   };
-  console.log(query);
-  const findMoviesData = async event => {
-    event.preventDefault();
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${filter}&page=1&include_adult=false`;
-    const data = await axios.get(url);
-    const movieFiltered = await data.data.results;
-    setFindMovies(await movieFiltered);
-  };
-  useEffect(() => {
-    findMoviesData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
 
+  useEffect(() => {
+
+    findMoviesData(filter).then(data =>{
+      setMovies(data)
+    },[findMoviesData])
+
+  });
+  
   return (
     <>
-      <form onSubmit={findMoviesData} className={css.form}>
+      <form 
+      onSubmit={(e)=> e.preventDefault()} 
+      className={css.form}>
         <input
           type="text"
           autoComplete="off"
-          name="filter"
+          name="query"
           autoFocus
           placeholder="Type movie title"
           value={filter}
@@ -43,16 +43,15 @@ const Movies = () => {
         <button>Search</button>
       </form>
       <ol>
-        {findMovies.length <= 0 ? (
-          <p></p>
-        ) : (
-          findMovies.map(singleTitle => {
+        {movies.length > 0 &&  (
+          movies.map(singleTitle => {
             return (
               <li id={singleTitle.id} key={singleTitle.id} className={css.link}>
                 <Link
                   to={`/goit-react-hw-05-movies/movies/${singleTitle.id}`}
                   className={css.main}
                   state={{from:location}}
+                  
                 >
                   {singleTitle.title}
                 </Link>

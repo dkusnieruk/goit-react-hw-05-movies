@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet, useLocation } from 'react-router-dom';
-import axios from 'axios';
-import css from '../Post/singlePost.module.css';
+import { findDetails } from 'components/Api/api';
+import css from '../Post/singleMovie.module.css';
 
-const API_KEY = '209b988e1e5a3c54f84bfbe290fdf3e2';
-
-const SinglePost = () => {
+const SingleMovies = () => {
   const { moviesId } = useParams();
   const [singleMovie, setSingleMovie] = useState(``);
   const location = useLocation()
 
-  const findDetails = async event => {
-    const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${API_KEY}&language=en-US`;
-    const data = await axios.get(url);
-    const singleMovie = await data.data;
-    setSingleMovie(await singleMovie);
-  };
+  // const findDetails = async event => {
+  //   const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${API_KEY}&language=en-US`;
+  //   const data = await axios.get(url);
+  //   const singleMovie = await data.data;
+  //   setSingleMovie(await singleMovie);
+  // };
   useEffect(() => {
-    findDetails();
+    findDetails(moviesId).then(data=>{
+      setSingleMovie(data)
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSingleMovie]);
-  console.log(singleMovie);
+ 
   return (
     <>
       {singleMovie !== '' ? (
@@ -81,4 +81,4 @@ const SinglePost = () => {
   );
 };
 
-export default SinglePost;
+export default SingleMovies;
