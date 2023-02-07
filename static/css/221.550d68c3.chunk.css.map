@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/221.550d68c3.chunk.css","mappings":"AAAA,gBAGE,kBAAmB,CADnB,YAAa,CADb,WAGF,CAEA,iBAGE,UAAY,CAFZ,WAAY,CACZ,oBAEF","sources":["components/Nav/nav.module.css"],"sourcesContent":[".nav {\n  height: 50px;\n  display: flex;\n  align-items: center;\n}\n\n.link {\n  margin: 10px;\n  text-decoration: none;\n  color: black;\n}\n"],"names":[],"sourceRoot":""}
