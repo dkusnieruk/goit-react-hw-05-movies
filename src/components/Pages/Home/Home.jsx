@@ -25,7 +25,10 @@ const Home = () => {
         {data.map(movie => {
           return (
             <li index={movie.id} id={movie.id} className={css.list}>
-              <Link  className={css.main} to={`/goit-react-hw-05-movies/movies/${movie.id}`}>
+              <Link
+                className={css.main}
+                to={`/goit-react-hw-05-movies/movies/${movie.id}`}
+              >
                 {movie.title}
               </Link>
             </li>

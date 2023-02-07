@@ -3,9 +3,10 @@ import Template from './Pages/Template';
 import NotFound from './Pages/NotFound';
 import Home from './Pages/Home/Home';
 import Movies from './Pages/Movies/Movies';
-import SinglePost from './Pages/Post';
+import SinglePost from './Pages/Post/SinglePost';
 import Cast from './Pages/Post/Cast';
 import Reviews from './Pages/Post/Reviews';
+
 export const App = () => {
   return (
     <>
