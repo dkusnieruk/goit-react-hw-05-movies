@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import css from '../Movies/movies.module.css';
 import { findMoviesData } from 'components/Api/api';
@@ -10,14 +10,19 @@ const Movies = () => {
   const location = useLocation();
 
   // eslint-disable-next-line
-  const query = searchParams.get('query');
-  console.log(query);
+  const query = searchParams.get('query') || '';
   const onChange = event => {
     const { value } = event.target;
     setFilter(value);
     setSearchParams({ query: value });
   };
 
+  useEffect(() => {
+    location.state &&
+      findMoviesData(query).then(data => {
+        setMovies(data);
+      });
+  });
   const handleSubmit = e => {
     e.preventDefault();
     findMoviesData(filter).then(data => {

@@ -24,6 +24,7 @@ const SingleMovies = () => {
             to={
               location.state ? location.state.from : `/goit-react-hw-05-movies/`
             }
+            state={{ from: location }}
           >
             Go Back
           </Link>
@@ -57,10 +58,18 @@ const SingleMovies = () => {
               </div>
               <div>
                 <h2 className={css.subTitle}>Additional Information:</h2>
-                <Link className={css.contentGenre} to={`cast`}>
+                <Link
+                  className={css.contentGenre}
+                  state={{ from: location.state.from }}
+                  to={`cast`}
+                >
                   Cast
                 </Link>
-                <Link className={css.contentGenre} to={`reviews`}>
+                <Link
+                  className={css.contentGenre}
+                  state={{ from: location.state.from }}
+                  to={`reviews`}
+                >
                   Reviews
                 </Link>
               </div>

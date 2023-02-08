@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import css from '../Home/home.module.css';
 import { fetchPopular } from '../../Api/api';
 
 const Home = () => {
   const [data, setData] = useState([]);
-
+  const location2 = useLocation();
   useEffect(() => {
     fetchPopular().then(data => {
       setData(data);
@@ -23,6 +23,7 @@ const Home = () => {
               <Link
                 className={css.main}
                 to={`/goit-react-hw-05-movies/movies/${movie.id}`}
+                state={{ from: location2 }}
               >
                 {movie.title}
               </Link>
