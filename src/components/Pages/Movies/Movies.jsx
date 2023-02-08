@@ -11,7 +11,7 @@ const Movies = () => {
 
   // eslint-disable-next-line
   const query = searchParams.get('query');
-
+  console.log(query);
   const onChange = event => {
     const { value } = event.target;
     setFilter(value);

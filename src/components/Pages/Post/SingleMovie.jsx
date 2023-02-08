@@ -8,12 +8,6 @@ const SingleMovies = () => {
   const [singleMovie, setSingleMovie] = useState(``);
   const location = useLocation();
 
-  // const findDetails = async event => {
-  //   const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${API_KEY}&language=en-US`;
-  //   const data = await axios.get(url);
-  //   const singleMovie = await data.data;
-  //   setSingleMovie(await singleMovie);
-  // };
   useEffect(() => {
     findDetails(moviesId).then(data => {
       setSingleMovie(data);
@@ -66,10 +60,7 @@ const SingleMovies = () => {
                 <Link className={css.contentGenre} to={`cast`}>
                   Cast
                 </Link>
-                <Link
-                  className={css.contentGenre}
-                  to={`/goit-react-hw-05-movies/movies/${moviesId}/reviews`}
-                >
+                <Link className={css.contentGenre} to={`reviews`}>
                   Reviews
                 </Link>
               </div>
