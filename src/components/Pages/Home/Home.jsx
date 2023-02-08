@@ -5,14 +5,14 @@ import { fetchPopular } from '../../Api/api';
 
 const Home = () => {
   const [data, setData] = useState([]);
- 
+
   useEffect(() => {
-    fetchPopular().then(data =>{
-      setData(data)
+    fetchPopular().then(data => {
+      setData(data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
- 
+
   return (
     <>
       <h1 className={css.title}>Top trending movies</h1>

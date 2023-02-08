@@ -27,12 +27,12 @@
   font-size: 15px;
   margin: 5px;
   text-decoration: none;
-  color:black;
+  color: black;
 }
 
-.contentGenre:hover{
-    color:blue;
-    text-decoration: underline;
+.contentGenre:hover {
+  color: blue;
+  text-decoration: underline;
 }
 
 .genresList {

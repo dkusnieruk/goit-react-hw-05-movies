@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import css from '../Movies/movies.module.css';
 import { findMoviesData } from 'components/Api/api';
@@ -7,30 +7,27 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [filter, setFilter] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation()
-  
-// eslint-disable-next-line
+  const location = useLocation();
+
+  // eslint-disable-next-line
   const query = searchParams.get('query');
-  
+
   const onChange = event => {
     const { value } = event.target;
     setFilter(value);
     setSearchParams({ query: value });
   };
 
-  useEffect(() => {
+  const handleSubmit = e => {
+    e.preventDefault();
+    findMoviesData(filter).then(data => {
+      setMovies(data);
+    });
+  };
 
-    findMoviesData(filter).then(data =>{
-      setMovies(data)
-    },[findMoviesData])
-
-  });
-  
   return (
     <>
-      <form 
-      onSubmit={(e)=> e.preventDefault()} 
-      className={css.form}>
+      <form onSubmit={handleSubmit} className={css.form}>
         <input
           type="text"
           autoComplete="off"
@@ -43,22 +40,20 @@ const Movies = () => {
         <button>Search</button>
       </form>
       <ol>
-        {movies.length > 0 &&  (
+        {movies.length > 0 &&
           movies.map(singleTitle => {
             return (
               <li id={singleTitle.id} key={singleTitle.id} className={css.link}>
                 <Link
                   to={`/goit-react-hw-05-movies/movies/${singleTitle.id}`}
                   className={css.main}
-                  state={{from:location}}
-                  
+                  state={{ from: location }}
                 >
                   {singleTitle.title}
                 </Link>
               </li>
             );
-          })
-        )}
+          })}
       </ol>
       <section>
         <Outlet />

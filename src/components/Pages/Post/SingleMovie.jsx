@@ -6,7 +6,7 @@ import css from '../Post/singleMovie.module.css';
 const SingleMovies = () => {
   const { moviesId } = useParams();
   const [singleMovie, setSingleMovie] = useState(``);
-  const location = useLocation()
+  const location = useLocation();
 
   // const findDetails = async event => {
   //   const url = `https://api.themoviedb.org/3/movie/${moviesId}?api_key=${API_KEY}&language=en-US`;
@@ -15,17 +15,22 @@ const SingleMovies = () => {
   //   setSingleMovie(await singleMovie);
   // };
   useEffect(() => {
-    findDetails(moviesId).then(data=>{
-      setSingleMovie(data)
+    findDetails(moviesId).then(data => {
+      setSingleMovie(data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSingleMovie]);
- 
+
   return (
     <>
       {singleMovie !== '' ? (
         <>
-          <Link className={css.back} to={location.state ?location.state.from :`/goit-react-hw-05-movies/`}>
+          <Link
+            className={css.back}
+            to={
+              location.state ? location.state.from : `/goit-react-hw-05-movies/`
+            }
+          >
             Go Back
           </Link>
           <div className={css.movie}>
