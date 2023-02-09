@@ -17,7 +17,7 @@ const SingleMovies = () => {
 
   return (
     <>
-      {singleMovie !== '' ? (
+      {singleMovie && (
         <>
           <Link
             className={css.back}
@@ -79,8 +79,6 @@ const SingleMovies = () => {
             </div>
           </div>
         </>
-      ) : (
-        ''
       )}
     </>
   );

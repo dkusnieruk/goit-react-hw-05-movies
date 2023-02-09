@@ -3,13 +3,7 @@ import { lazy, Suspense } from 'react';
 const Template = lazy(() => import('./Template'));
 const Home = lazy(() => import('./Pages/Home/Home'));
 const Movies = lazy(() => import('./Pages/Movies/Movies'));
-const SingleMovie = lazy(() => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      return resolve(import('./Pages/Post/SingleMovie'));
-    }, 1500);
-  });
-});
+const SingleMovie = lazy(() => import('./Pages/Post/SingleMovie'));
 const Cast = lazy(() => import('./Pages/Post/Cast'));
 const Reviews = lazy(() => import('./Pages/Post/Reviews'));
 
